@@ -18,3 +18,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WEBEWALL_96C78 }}
           channelId: live
           projectId: webewall-96c78
+          entryPoint: website
