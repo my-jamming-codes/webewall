@@ -11,11 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run:  cd website && npm ci && npm run build
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - run:  pnpm install && pnpm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WEBEWALL_96C78 }}
           channelId: live
           projectId: webewall-96c78
-          entryPoint: website
+          entryPoint: .
