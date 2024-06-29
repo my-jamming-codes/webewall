@@ -1,5 +1,5 @@
 ---
-heroImage: /src/assets/images/banner.jpg
+heroImage: /src/assets/images/angular.webp
 category: angular
 description: 'Angular Facts 1'
 pubDate: 2024-06-26T23:23:00.000Z
@@ -22,6 +22,8 @@ import { bootstrapApplication } from '@angular/platform-browser';
 bootstrapApplication(AppComponent);
 ```
 
+<hr />
+
 ## ApplicationConfig
 
 1. The `ApplicationConfig` interface is used to define the configuration object for the `bootstrapApplication` function.
@@ -38,6 +40,8 @@ export const appConfig: ApplicationConfig = {
 bootstrapApplication(AppComponent, appConfig);
 ```
 
+<hr />
+
 ## provideZoneChangeDetection
 
 1. The `provideZoneChangeDetection` function is used to provide the zone change detection strategy.
@@ -52,6 +56,8 @@ bootstrapApplication(AppComponent, {
 });
 ```
 
+<hr />
+
 ## provideRouter
 
 1. The `provideRouter` function is used to provide the router configuration.
@@ -65,6 +71,8 @@ bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
 });
 ```
+
+<hr />
 
 ## Routes
 
@@ -128,150 +136,6 @@ routes.push({
 });
 ```
 
-## Trivia Quiz
-
-**Question 1**: `bootstrapApplication`
-1. What is the `bootstrapApplication` function used for in Angular?
-   - a) To define routes
-   - b) To provide zone change detection
-   - c) To bootstrap an Angular application
-   - d) To configure the application module
-
-2. From which module is the `bootstrapApplication` function exported?
-   - a) `@angular/core`
-   - b) `@angular/platform-browser`
-   - c) `@angular/router`
-   - d) `@angular/common`
-
-3. Which component is typically bootstrapped using the `bootstrapApplication` function?
-   - a) Any child component
-   - b) The root component of the application
-   - c) The service provider
-   - d) The directive
-
-**Question 2**: `ApplicationConfig`
-1. What is the `ApplicationConfig` interface used for in Angular?
-   - a) To define routes
-   - b) To configure the router
-   - c) To define the configuration object for the `bootstrapApplication` function
-   - d) To provide zone change detection
-
-2. From which module is the `ApplicationConfig` interface exported?
-   - a) `@angular/core`
-   - b) `@angular/platform-browser`
-   - c) `@angular/router`
-   - d) `@angular/common`
-
-**Question 3**: `provideZoneChangeDetection`
-1. What is the purpose of the `provideZoneChangeDetection` function in Angular?
-   - a) To provide the router configuration
-   - b) To define routes
-   - c) To provide the zone change detection strategy
-   - d) To bootstrap an Angular application
-
-2. From which module is the `provideZoneChangeDetection` function exported?
-   - a) `@angular/core`
-   - b) `@angular/platform-browser`
-   - c) `@angular/router`
-   - d) `@angular/common`
-
-**Question 4**: `provideRouter`
-1. What is the purpose of the `provideRouter` function in Angular?
-   - a) To provide the zone change detection strategy
-   - b) To define routes
-   - c) To provide the router configuration
-   - d) To bootstrap an Angular application
-
-2. From which module is the `provideRouter` function exported?
-   - a) `@angular/core`
-   - b) `@angular/platform-browser`
-   - c) `@angular/router`
-   - d) `@angular/common`
-
-**Question 5**: `Routes`
-1. What is the `Routes` interface used for in Angular?
-   - a) To provide the zone change detection strategy
-   - b) To define the routes configuration for the router
-   - c) To bootstrap an Angular application
-   - d) To define the configuration object for the `bootstrapApplication` function
-
-2. From which module is the `Routes` interface exported?
-   - a) `@angular/core`
-   - b) `@angular/platform-browser`
-   - c) `@angular/router`
-   - d) `@angular/common`
-
-3. What property is used in `Routes` to load a module lazily?
-   - a) `path`
-   - b) `component`
-   - c) `loadChildren`
-   - d) `redirectTo`
-
-4. Which property is used in `Routes` to define the path for the route?
-   - a) `component`
-   - b) `path`
-   - c) `loadChildren`
-   - d) `redirectTo`
-
-5. Which property is used in `Routes` to define the component for the route?
-   - a) `path`
-   - b) `component`
-   - c) `loadChildren`
-   - d) `redirectTo`
-
-6. Which property is used in `Routes` to define child routes?
-   - a) `component`
-   - b) `loadChildren`
-   - c) `children`
-   - d) `redirectTo`
-
-7. Which property is used in `Routes` to redirect to another route?
-   - a) `component`
-   - b) `loadChildren`
-   - c) `children`
-   - d) `redirectTo`
-
-8. Which property is used in `Routes` to define the matching strategy for the route?
-   - a) `component`
-   - b) `pathMatch`
-   - c) `loadChildren`
-   - d) `redirectTo`
-
-9. Which property is used in `Routes` to pass additional data to the route?
-   - a) `component`
-   - b) `pathMatch`
-   - c) `data`
-   - d) `loadChildren`
-
-### Answers
-
-Question 1: bootstrapApplication
-1. c) To bootstrap an Angular application
-2. b) `@angular/platform-browser`
-3. b) The root component of the application
-
-Question 2: ApplicationConfig
-1. c) To define the configuration object for the `bootstrapApplication` function
-2. a) `@angular/core`
-
-Question 3: provideZoneChangeDetection
-1. c) To provide the zone change detection strategy
-2. a) `@angular/core`
-
-Question 4: provideRouter
-1. c) To provide the router configuration
-2. c) `@angular/router`
-
-Question 5: Routes
-1. b) To define the routes configuration for the router
-2. c) `@angular/router`
-3. c) `loadChildren`
-4. b) `path`
-5. b) `component`
-6. c) `children`
-7. d) `redirectTo`
-8. b) `pathMatch`
-9. c) `data`
 
 
 
