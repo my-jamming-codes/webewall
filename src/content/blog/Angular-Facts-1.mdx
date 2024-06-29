@@ -1,0 +1,277 @@
+---
+heroImage: /src/assets/images/banner.jpg
+category: angular
+description: 'Angular Facts 1'
+pubDate: 2024-06-26T23:23:00.000Z
+tags:
+  - angular
+title: Angular Facts 1
+---
+
+## bootstrapApplication
+
+1. The `bootstrapApplication` function is used to bootstrap an Angular application.
+2. It is a function that is exported from the `@angular/platform-browser` module.
+3. It is used to bootstrap the root component of the application.
+
+
+```typescript
+import { bootstrapApplication } from '@angular/platform-browser';
+
+// The below code will bootstrap the root component of the application.
+bootstrapApplication(AppComponent);
+```
+
+## ApplicationConfig
+
+1. The `ApplicationConfig` interface is used to define the configuration object for the `bootstrapApplication` function.
+2. It is an interface that is exported from the `@angular/core` module.
+3. It is used to define the configuration object for the `bootstrapApplication` function.
+
+```typescript
+import { ApplicationConfig } from '@angular/core';
+
+// The below code will define the configuration object for the bootstrapApplication function.
+export const appConfig: ApplicationConfig = {
+  providers: []
+};
+bootstrapApplication(AppComponent, appConfig);
+```
+
+## provideZoneChangeDetection
+
+1. The `provideZoneChangeDetection` function is used to provide the zone change detection strategy.
+2. It is a function that is exported from the `@angular/core` module.
+
+```typescript
+import { provideZoneChangeDetection } from '@angular/core';
+
+// The below code will provide the zone change detection strategy with bootstrapApplication
+bootstrapApplication(AppComponent, {
+  providers: [provideZoneChangeDetection()]
+});
+```
+
+## provideRouter
+
+1. The `provideRouter` function is used to provide the router configuration.
+2. It is a function that is exported from the `@angular/router` module.
+
+```typescript
+import { provideRouter } from '@angular/router';
+
+// The below code will provide the router configuration with bootstrapApplication
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes)]
+});
+```
+
+## Routes
+
+1. The `Routes` interface is used to define the routes configuration for the router.
+2. It is an interface that is exported from the `@angular/router` module.
+3. The `loadChildren` property is used to load a module lazily.
+4. The `path` property is used to define the path for the route.
+5. The `component` property is used to define the component for the route.
+6. The `children` property is used to define child routes.
+7. The `redirectTo` property is used to redirect to another route.
+8. The `pathMatch` property is used to define the matching strategy for the route.
+9. The `data` property is used to pass additional data to the route.
+
+
+```typescript
+import { Routes } from '@angular/router';
+
+// The below code will define the routes configuration for the router
+const routes: Routes = [ ]
+
+// Adding a route containing path and component
+routes.push({
+  path: 'hello',
+  component: HelloComponent
+});
+
+// Adding a route with loadChildren
+routes.push({
+  path: 'admin',
+  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+});
+
+// Adding a route with children
+routes.push({
+  path: 'dashboard',
+  children: [
+    { path: 'overview', component: DashboardOverviewComponent },
+    { path: 'settings', component: DashboardSettingsComponent }
+  ]
+});
+
+// Adding a route with redirectTo
+routes.push({
+  path: '',
+  redirectTo: '/dashboard',
+  pathMatch: 'full'
+});
+
+// Adding a route with pathMatch
+routes.push({
+  path: 'details',
+  component: DetailsComponent,
+  pathMatch: 'full'
+});
+
+// Adding a route with data
+routes.push({
+  path: 'example',
+  pathComponent: ExampleComponent,
+  data: { title: 'Example Page' }
+});
+```
+
+## Trivia Quiz
+
+**Question 1**: `bootstrapApplication`
+1. What is the `bootstrapApplication` function used for in Angular?
+   - a) To define routes
+   - b) To provide zone change detection
+   - c) To bootstrap an Angular application
+   - d) To configure the application module
+
+2. From which module is the `bootstrapApplication` function exported?
+   - a) `@angular/core`
+   - b) `@angular/platform-browser`
+   - c) `@angular/router`
+   - d) `@angular/common`
+
+3. Which component is typically bootstrapped using the `bootstrapApplication` function?
+   - a) Any child component
+   - b) The root component of the application
+   - c) The service provider
+   - d) The directive
+
+**Question 2**: `ApplicationConfig`
+1. What is the `ApplicationConfig` interface used for in Angular?
+   - a) To define routes
+   - b) To configure the router
+   - c) To define the configuration object for the `bootstrapApplication` function
+   - d) To provide zone change detection
+
+2. From which module is the `ApplicationConfig` interface exported?
+   - a) `@angular/core`
+   - b) `@angular/platform-browser`
+   - c) `@angular/router`
+   - d) `@angular/common`
+
+**Question 3**: `provideZoneChangeDetection`
+1. What is the purpose of the `provideZoneChangeDetection` function in Angular?
+   - a) To provide the router configuration
+   - b) To define routes
+   - c) To provide the zone change detection strategy
+   - d) To bootstrap an Angular application
+
+2. From which module is the `provideZoneChangeDetection` function exported?
+   - a) `@angular/core`
+   - b) `@angular/platform-browser`
+   - c) `@angular/router`
+   - d) `@angular/common`
+
+**Question 4**: `provideRouter`
+1. What is the purpose of the `provideRouter` function in Angular?
+   - a) To provide the zone change detection strategy
+   - b) To define routes
+   - c) To provide the router configuration
+   - d) To bootstrap an Angular application
+
+2. From which module is the `provideRouter` function exported?
+   - a) `@angular/core`
+   - b) `@angular/platform-browser`
+   - c) `@angular/router`
+   - d) `@angular/common`
+
+**Question 5**: `Routes`
+1. What is the `Routes` interface used for in Angular?
+   - a) To provide the zone change detection strategy
+   - b) To define the routes configuration for the router
+   - c) To bootstrap an Angular application
+   - d) To define the configuration object for the `bootstrapApplication` function
+
+2. From which module is the `Routes` interface exported?
+   - a) `@angular/core`
+   - b) `@angular/platform-browser`
+   - c) `@angular/router`
+   - d) `@angular/common`
+
+3. What property is used in `Routes` to load a module lazily?
+   - a) `path`
+   - b) `component`
+   - c) `loadChildren`
+   - d) `redirectTo`
+
+4. Which property is used in `Routes` to define the path for the route?
+   - a) `component`
+   - b) `path`
+   - c) `loadChildren`
+   - d) `redirectTo`
+
+5. Which property is used in `Routes` to define the component for the route?
+   - a) `path`
+   - b) `component`
+   - c) `loadChildren`
+   - d) `redirectTo`
+
+6. Which property is used in `Routes` to define child routes?
+   - a) `component`
+   - b) `loadChildren`
+   - c) `children`
+   - d) `redirectTo`
+
+7. Which property is used in `Routes` to redirect to another route?
+   - a) `component`
+   - b) `loadChildren`
+   - c) `children`
+   - d) `redirectTo`
+
+8. Which property is used in `Routes` to define the matching strategy for the route?
+   - a) `component`
+   - b) `pathMatch`
+   - c) `loadChildren`
+   - d) `redirectTo`
+
+9. Which property is used in `Routes` to pass additional data to the route?
+   - a) `component`
+   - b) `pathMatch`
+   - c) `data`
+   - d) `loadChildren`
+
+### Answers
+
+Question 1: bootstrapApplication
+1. c) To bootstrap an Angular application
+2. b) `@angular/platform-browser`
+3. b) The root component of the application
+
+Question 2: ApplicationConfig
+1. c) To define the configuration object for the `bootstrapApplication` function
+2. a) `@angular/core`
+
+Question 3: provideZoneChangeDetection
+1. c) To provide the zone change detection strategy
+2. a) `@angular/core`
+
+Question 4: provideRouter
+1. c) To provide the router configuration
+2. c) `@angular/router`
+
+Question 5: Routes
+1. b) To define the routes configuration for the router
+2. c) `@angular/router`
+3. c) `loadChildren`
+4. b) `path`
+5. b) `component`
+6. c) `children`
+7. d) `redirectTo`
+8. b) `pathMatch`
+9. c) `data`
+
+
+

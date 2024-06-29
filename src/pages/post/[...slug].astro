@@ -9,6 +9,7 @@ import { getPosts } from '@/utils'
 import SButton from '@/components/mdx/SButton'
 import Disqus from '@/components/Disqus'
 import { disqusConfig } from '@/data/disqus.config'
+import RotatingShape from '../../components/icons/RotatingShape.astro'
 
 const posts = await getCollection('blog')
 export async function getStaticPaths() {
@@ -47,6 +48,7 @@ const disqusEnabled = disqusConfig.enabled
 	<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'>
 		<!-- aside  -->
 		<aside class='md:flex flex-col gap-8 hidden'>
+			<RotatingShape />
 			<Share />
 			<div class='sticky top-24 self-start hidden md:block transition-all duration-200'>
 				{headings && headings.length > 0 && <TableOfContents {headings} />}
