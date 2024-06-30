@@ -13,130 +13,250 @@ title: React Facts 1
 1. The `onClick` event is used to handle the click event on an element.
 2. It is a synthetic event that is fired when a user clicks on an element.
 3. It is used to trigger a function when a user clicks on an element.
+4. The `onClick` event can be used with any HTML element, such as a button, div, span, etc.
+5. The `onClick` event can be used with a function that is defined in the component.
+6. The `onClick` event can be used with an arrow function to handle the click event inline.
+7. The `onClick` event can be used with an event parameter to access the event object.
+8. The `onClick` event can be used to trigger an action, update the state, or perform any other operation when a user clicks on an element.
+9. preventDefault() can be used to prevent the default behavior of an element when the `onClick` event is triggered.
 
 ```jsx
 // The below code will handle the click event on a button element.
 <button onClick={handleClick}>Click Me</button>
+
+// The below code will log "Button Clicked" when the button is clicked.
+handleClick = () => {
+    console.log("Button Clicked");
+}
+
+// The below code will handle the click event on a button element with an event parameter.
+handleClick = (event) => {
+    console.log("Button Clicked", event);
+}
+
+// example of using onClick with an arrow function
+<button onClick={() => console.log("Button Clicked")}>Click Me</button>
+
+// example of using onClick with preventDefault
+handleClick = (event) => {
+    event.preventDefault();
+    console.log("Button Clicked");
+}
+
 ```
 
 <hr />
 
-## onDoubleClick
+## useState
 
-1. The `onDoubleClick` event is used to handle the double click event on an element.
-2. It is a synthetic event that is fired when a user double clicks on an element.
-3. It is used to trigger a function when a user double clicks on an element.
+1. The `useState` hook is used to add state to a functional component.
+2. It returns an array with two elements: the current state value and a function that lets you update it.
+3. The initial state is passed as an argument to the `useState` hook.
 
 ```jsx
-// The below code will handle the double click event on a button element.
-<button onDoubleClick={handleDoubleClick}>Double Click Me</button>
+// The below code will add a state variable count to the component.
+const [count, setCount] = useState(0);
+
+// The below code will update the count state variable.
+setCount(count + 1);
+
+// The below code will display the count state variable.
+<p>{count}</p>
+
+// The below code will update the count state variable using a function.
+setCount((prevCount) => prevCount + 1);
 ```
 
 <hr />
 
+## useEffect
 
-## onContextMenu
-
-1. The `onContextMenu` event is used to handle the context menu event on an element.
-2. It is a synthetic event that is fired when a user right-clicks on an element.
-3. It is used to trigger a function when a user right-clicks on an element.
+1. The `useEffect` hook is used to perform side effects in a functional component.
+2. It is similar to `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` in class components.
+3. The `useEffect` hook takes two arguments: a function that contains the side effect and an optional array of dependencies.
+4. The function passed to `useEffect` is called after the component is rendered.
+5. The function passed to `useEffect` can return a cleanup function that will be called before the component is unmounted.
+6. The array of dependencies is used to specify when the effect should run.
+7. If the array of dependencies is empty, the effect will only run once after the component is mounted.
+8. If the array of dependencies contains variables, the effect will run whenever one of the variables changes.
+9. The cleanup function is used to clean up any resources used by the effect, such as event listeners or timers.
+10. The cleanup function is called before the component is unmounted and before the effect runs again.
+11. The cleanup function can be used to cancel any asynchronous operations or clean up any subscriptions.
+12. The `useEffect` hook can be used to fetch data from an API, update the document title, set up event listeners, and more.
+13. The `useEffect` hook can be used to perform side effects in a functional component.
+14. async functions can't be used directly in the `useEffect` hook. You can create a separate function and call it inside the `useEffect` hook.
 
 ```jsx
-// The below code will handle the context menu event on a button element.
-<button onContextMenu={handleContextMenu}>Right Click Me</button>
+// The below code will log "Component Mounted" when the component is mounted.
+useEffect(() => {
+    console.log("Component Mounted");
+}, []);
+
+// The below code will log "Count Updated" when the count state is updated.
+useEffect(() => {
+    console.log("Count Updated");
+}, [count]);
+
+// cleanup function
+useEffect(() => {
+    console.log("Component Mounted");
+    return () => {
+        console.log("Component Unmounted");
+    };
+}, []);
+
+// cleanup function example with setTimeout
+useEffect(() => {
+    const timer = setTimeout(() => {
+        console.log("Timer Expired");
+    }, 1000);
+    return () => {
+        clearTimeout(timer);
+    };
+}, []);
+
+// example of wrong async function usage
+useEffect(async () => {
+    const data = await fetchData();
+    console.log(data);
+}, []);
+
+// correct way to use async function
+useEffect(() => {
+    const fetchData = async () => {
+        const data = await fetch('https://api.example.com/data');
+        const json = await data.json();
+        console.log(json);
+    };
+    fetchData();
+}, []);
+
+// Example with useState and useEffect
+import React, { useEffect, useState } from 'react';
+
+function ExampleComponent() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(err => console.error(err));
+  }, []); // The empty array means this effect runs once on mount and not on updates.
+
+  if (!data) return 'Loading...';
+
+  // Rendering the data after it's fetched.
+  return (
+    <div>
+      <h2>Data:</h2>
+      {data.map(item =>
+        <div key={item.id}>
+          {item.value}
+        </div>
+      )}
+    </div>
+  );
+}
 ```
 
 <hr />
 
-## onMouseEnter
+## Props
 
-1. The `onMouseEnter` event is used to handle the mouse enter event on an element.
-2. It is a synthetic event that is fired when a user moves the mouse over an element.
-3. It is used to trigger a function when a user moves the mouse over an element.
-
-```jsx
-// The below code will handle the mouse enter event on a button element.
-<button onMouseEnter={handleMouseEnter}>Mouse Enter Me</button>
-```
-
-## onMouseLeave
-
-1. The `onMouseLeave` event is used to handle the mouse leave event on an element.
-2. It is a synthetic event that is fired when a user moves the mouse out of an element.
-3. It is used to trigger a function when a user moves the mouse out of an element.
+1. Props are used to pass data from a parent component to a child component.
+2. Props are read-only and cannot be modified by the child component.
+3. Props are passed as attributes to the child component.
+4. Props can be of any type, including strings, numbers, functions, objects, arrays, and booleans.
+5. Props can also be children, which are the elements between the opening and closing tags of the component.
+6. Props can be accessed in the child component using the `props` object.
+7. Props can be destructured in the child component to access them directly.
+8. Props can be used to pass event handlers, state, and other data to child components.
+9. Props can be used to pass data between components in a React application.
 
 ```jsx
-// The below code will handle the mouse leave event on a button element.
-<button onMouseLeave={handleMouseLeave}>Mouse Leave Me</button>
-```
+// The below code will pass the name prop to the child component.
+<ChildComponent name="John" />
 
-<hr />
+// The below code will display the name prop in the child component.
+<p>{props.name}</p>
 
-## onMouseOver
+// The below code will pass multiple props to the child component.
+<ChildComponent name="John" age={25} />
 
-1. The `onMouseOver` event is used to handle the mouse over event on an element.
-2. It is a synthetic event that is fired when a user moves the mouse over an element.
-3. It is used to trigger a function when a user moves the mouse over an element.
+// The below code will display multiple props in the child component.
+<p>{props.name} - {props.age}</p>
 
-```jsx
-// The below code will handle the mouse over event on a button element.
-<button onMouseOver={handleMouseOver}>Mouse Over Me</button>
-```
+// The below code will pass a function as a prop to the child component.
+<ChildComponent handleClick={handleClick} />
 
-<hr />
+// The below code will call the handleClick function in the child component.
+<button onClick={props.handleClick}>Click Me</button>
 
-## onMouseOut
+// The below code will pass an object as a prop to the child component.
+<ChildComponent person={{ name: "John", age: 25 }} />
 
-1. The `onMouseOut` event is used to handle the mouse out event on an element.
-2. It is a synthetic event that is fired when a user moves the mouse out of an element.
+// The below code will access the object prop in the child component.
+<p>{props.person.name} - {props.person.age}</p>
 
-```jsx
-// The below code will handle the mouse out event on a button element.
-<button onMouseOut={handleMouseOut}>Mouse Out Me</button>
-```
+// The below code will pass children as a prop to the child component.
+<ChildComponent>
+    <p>Child Component</p>
+</ChildComponent>
 
-<hr />
+// The below code will display the children prop in the child component.
+{props.children}
 
-## onMouseMove
+// The below code will pass an array as a prop to the child component.
+<ChildComponent items={['item1', 'item2', 'item3']} />
 
-1. The `onMouseMove` event is used to handle the mouse move event on an element.
-2. It is a synthetic event that is fired when a user moves the mouse over an element.
-3. It is used to trigger a function when a user moves the mouse over an element.
+// The below code will access the array prop in the child component.
+{props.items.map(item => <p key={item}>{item}</p>)}
 
-```jsx
-// The below code will handle the mouse move event on a button element.
-<button onMouseMove={handleMouseMove}>Mouse Move Me</button>
-```
+// The below code will pass a boolean prop to the child component.
+<ChildComponent isActive={true} />
 
-<hr />
-
-## onMouseDown
-
-1. The `onMouseDown` event is used to handle the mouse down event on an element.
-2. It is a synthetic event that is fired when a user presses a mouse button over an element.
-3. It is used to trigger a function when a user presses a mouse button over an element.
-
-```jsx
-// The below code will handle the mouse down event on a button element.
-<button onMouseDown={handleMouseDown}>Mouse Down Me</button>
+// The below code will display the boolean prop in the child component.
+<p>{props.isActive ? 'Active' : 'Inactive'}</p>
 ```
 
 <hr />
 
-## onMouseUp
+## Fragment
 
-1. The `onMouseUp` event is used to handle the mouse up event on an element.
-2. It is a synthetic event that is fired when a user releases a mouse button over an element.
-3. It is used to trigger a function when a user releases a mouse button over an element.
+1. Fragments are used to group multiple elements in React without adding extra nodes to the DOM.
+2. Fragments allow you to return multiple elements from a component without wrapping them in a parent element.
+3. Fragments can be used with the `<></>` syntax or `<React.Fragment></React.Fragment>` syntax.
+4. key attribute can be used with fragments to avoid the warning when returning multiple elements.
+5. state and lifecycle methods can't be used in fragments. For example, you can't use `useState` or `useEffect` in fragments.
 
 ```jsx
-// The below code will handle the mouse up event on a button element.
-<button onMouseUp={handleMouseUp}>Mouse Up Me</button>
+// The below code will return multiple elements using a fragment.
+return (
+    <>
+        <p>Element 1</p>
+        <p>Element 2</p>
+    </>
+);
+
+// The below code will return multiple elements using a fragment with a key.
+return (
+    <React.Fragment key={1}>
+        <p>Element 1</p>
+        <p>Element 2</p>
+    </React.Fragment>
+);
+
+
+// Here's an example usage of fragments in a component:
+function ExampleComponent() {
+  return (
+    <>
+      <h1>Hello, world!</h1>
+      <p>Welcome to our website.</p>
+    </>
+  );
+}
 ```
-
-<hr />
-
-
-
 
 
