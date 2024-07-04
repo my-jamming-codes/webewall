@@ -1,0 +1,134 @@
+---
+heroImage: /src/assets/images/ui-facts/ui.jpeg
+category: UI
+description: 'UI Facts 1'
+pubDate: 2024-06-26T23:23:00.000Z
+tags:
+  - navbar
+title: UI Facts 1
+---
+
+## Navbar
+
+1. The `Navbar` is a UI component that is used to provide navigation links to the user.
+2. It is a horizontal bar that contains links to different sections of a website.
+3. The `Navbar` is usually placed at the top of the page.
+4. It can contain links to different pages, dropdown menus, search bars, and other interactive elements.
+5. The `Navbar` can be styled using CSS to match the design of the website.
+6. The `Navbar` can be made responsive using media queries to adapt to different screen sizes.
+7. The `Navbar` can be fixed at the top of the page to provide easy access to navigation links.
+8. The `Navbar` can be customized with different colors, fonts, icons, and animations to enhance the user experience.
+
+```html
+// The below code will create a basic Navbar component.
+<nav>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+// The below html and css code will create a responsive Navbar component
+<style>
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #333;
+        color: white;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+    }
+
+    li {
+        margin-right: 1rem;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        ul {
+            display: none;
+        }
+
+        .menu-icon {
+            display: block;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            width: 100%;
+        }
+
+        .menu-toggle:checked + .menu {
+            display: flex;
+        }
+    }
+</style>
+
+<nav>
+    <div class="logo">Logo</div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+// The below html and css code will create a fixed Navbar component.
+<style>
+    .fixed-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+    }
+
+    .fixed-navbar ul {
+        display: flex;
+        list-style: none;
+    }
+
+    .fixed-navbar li {
+        margin-right: 1rem;
+    }
+
+    .fixed-navbar a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<nav class="fixed-navbar">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+```
+
+
+
