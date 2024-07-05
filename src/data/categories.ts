@@ -1,6 +1,7 @@
 // List of categories for blog posts
 export const CATEGORIES = [
-	'Frameworks',
-	'UI'
+	'SPA',
+	'UI',
+	'Mobile'
 ] as const
 
