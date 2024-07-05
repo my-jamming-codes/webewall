@@ -4,7 +4,7 @@ category: UI
 description: 'UI Facts 1'
 pubDate: 2024-06-26T23:23:00.000Z
 tags:
-  - navbar
+  - css
 title: UI Facts 1
 ---
 
@@ -129,6 +129,157 @@ title: UI Facts 1
     </ul>
 </nav>
 ```
+<hr />
+
+## flex
+
+1. The `flex` property in CSS is used to create flexible layouts.
+2. It is a shorthand property for setting the `flex-grow`, `flex-shrink`, and `flex-basis` properties.
+3. The `flex-grow` property specifies how much a flex item should grow relative to the other flex items.
+4. The `flex-shrink` property specifies how much a flex item should shrink relative to the other flex items.
+5. The `flex-basis` property specifies the initial size of a flex item before any remaining space is distributed.
+6. The `flex` property can be used to set all three properties at once in the following order: `flex-grow`, `flex-shrink`, `flex-basis`.
+7. The `flex` property can be used with the `flex-direction`, `justify-content`, and `align-items` properties to create different layouts.
+8. The `flex` property can be used with media queries to create responsive layouts that adapt to different screen sizes.
+9. The `flex` property is widely used in modern web design to create flexible and responsive layouts.
+
+```html
+// The below code will create a flex container with three flex items.
+<style>
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .flex-item {
+        flex: 1 1 30%;
+        padding: 1rem;
+        margin: 0.5rem;
+        background-color: #f0f0f0;
+    }
+</style>
+
+<div class="flex-container">
+    <div class="flex-item">Item 1</div>
+    <div class="flex-item">Item 2</div>
+    <div class="flex-item">Item 3</div>
+</div>
+
+
+// The below code will create a responsive flex container with two flex items.
+<style>
+    .responsive-flex-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .responsive-flex-item {
+        flex: 1 1 50%;
+        padding: 1rem;
+        margin: 0.5rem;
+        background-color: #f0f0f0;
+    }
+
+    @media (min-width: 768px) {
+        .responsive-flex-container {
+            flex-direction: row;
+        }
+    }
+</style>
+
+<div class="responsive-flex-container">
+    <div class="responsive-flex-item">Item 1</div>
+    <div class="responsive-flex-item">Item 2</div>
+</div>
+```
+
+<hr />
+
+## Modal
+
+1. The `Modal` is a UI component that is used to display content on top of the main content.
+2. It is a popup window that appears in the center of the screen and overlays the main content.
+3. The `Modal` is used to show important information, alerts, notifications, or interactive elements to the user.
+4. The `Modal` can contain text, images, videos, forms, buttons, and other interactive elements.
+5. The `Modal` can be styled using CSS to match the design of the website.
+6. The `Modal` can be opened and closed using JavaScript or CSS animations.
+7. The `Modal` can be made responsive using media queries to adapt to different screen sizes.
+8. The `Modal` can be customized with different colors, fonts, icons, and animations to enhance the user experience.
+
+```html
+// The below code will create a basic Modal component.
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+    }
+</style>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Modal Title</h2>
+        <p>Modal Content</p>
+    </div>
+</div>
+
+<button onclick="openModal()">Open Modal</button>
+
+<script>
+    function openModal() {
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
+
+
+// The below code will create a responsive Modal component.
+<style>
+    @media (max-width: 768px) {
+        .modal-content {
+            width: 90%;
+        }
+    }
+</style>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Modal Title</h2>
+        <p>Modal Content</p>
+    </div>
+</div>
+
+```
+
 
 
 
