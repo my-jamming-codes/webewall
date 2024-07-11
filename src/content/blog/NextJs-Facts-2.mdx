@@ -1,0 +1,168 @@
+---
+heroImage: /src/assets/images/nextjs-facts/next.jpeg
+category: SPA
+description: 'Nextjs Facts 2'
+pubDate: 2024-07-12T23:23:00.000Z
+tags:
+  - nextjs
+title: Nextjs Facts 2
+---
+
+## CSS support
+
+1. Next.js supports CSS out of the box, allowing you to import CSS files directly into your components.
+2. You can use CSS modules to scope your styles locally to a component, preventing style conflicts.
+3. Next.js also supports global CSS files that are imported into your application and applied globally.
+4. You can use CSS-in-JS libraries like styled-components or emotion to style your components with JavaScript.
+
+```javascript
+// components/Button.js
+import React from 'react'
+import styles from './Button.module.css'
+
+const Button = ({ children }) => {
+  return <button className={styles.button}>{children}</button>
+}
+
+export default Button
+```
+
+## Client and Server Rendering
+
+1. Next.js supports both client-side and server-side rendering, allowing you to choose the best rendering strategy for your application.
+2. Client-side rendering (CSR) is the default rendering mode in Next.js, where the initial HTML is generated on the server and then hydrated on the client.
+3. Server-side rendering (SSR) allows you to generate HTML on the server for each request, improving SEO and providing a better user experience.
+4. You can use getServerSideProps or getStaticProps to fetch data on the server and pass it to your components for rendering.
+
+```javascript
+// pages/index.js
+export async function getServerSideProps() {
+  const data = await fetchData()
+  return {
+    props: { data }
+  }
+}
+
+export default function Home({ data }) {
+  return (
+    <div>
+      {data.map(item => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  )
+}
+```
+
+<hr />
+
+## Server Actions
+
+1. Next.js allows you to define server actions using API routes, which are serverless functions that run on the server.
+2. API routes are defined in the pages/api directory and can be used to handle HTTP requests like GET, POST, PUT, DELETE, etc.
+3. You can use API routes to interact with databases, external APIs, or perform server-side logic without exposing your server code to the client.
+4. API routes are automatically deployed with your Next.js application and can be accessed at the /api endpoint.
+
+```javascript
+// pages/api/hello.js
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello World' })
+}
+```
+
+<hr />
+
+## Route Handlers
+
+1. Next.js allows you to define route handlers using catch-all routes, which match any route that hasn't been matched by other routes.
+2. Catch-all routes are defined using square brackets in the file name, like [...slug].js, and can be used to handle dynamic routes with multiple segments.
+3. You can access the dynamic segments of the route using the useRouter hook or the useRouter hook in your components.
+4. Catch-all routes are useful for building dynamic pages with flexible routing patterns.
+
+```javascript
+// pages/[...slug].js
+import { useRouter } from 'next/router'
+
+export default function DynamicPage() {
+  const router = useRouter()
+  const { slug } = router.query
+
+  return <div>Dynamic Page: {slug.join('/')}</div>
+}
+```
+
+## Advanced Routing
+
+1. Next.js supports advanced routing features like nested routes, dynamic routes, and optional catch-all routes.
+2. Nested routes allow you to create a hierarchy of pages with nested folders and files, improving the organization of your application.
+3. Dynamic routes enable you to create pages with dynamic segments in the URL, like /posts/[id], where id can be any value.
+4. Optional catch-all routes allow you to match any number of segments in the URL, like /blog/[[...slug]], where slug can be an empty array or an array of values.
+
+```javascript
+// pages/posts/[id].js
+import { useRouter } from 'next/router'
+
+export default function PostPage() {
+  const router = useRouter()
+  const { id } = router.query
+
+  return <div>Post: {id}</div>
+}
+```
+
+<hr />
+
+## Nested Layouts
+
+1. Next.js allows you to create nested layouts by nesting components within the _app.js file.
+2. Nested layouts enable you to define a hierarchy of layouts for your application, with each layout wrapping its child components.
+3. You can use the getLayout function to dynamically choose the layout for a specific page based on its route or other conditions.
+4. Nested layouts provide a flexible way to structure your application and manage the layout of different pages.
+
+```javascript
+// pages/_app.js
+import Layout from '../components/Layout'
+
+function MyApp({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => page)
+
+  return getLayout(<Component {...pageProps} />)
+}
+
+export default MyApp
+```
+
+<hr />
+
+## Middleware
+
+1. Next.js allows you to define middleware functions to intercept and modify requests before they are handled by your API routes.
+2. Middleware functions are defined as higher-order functions that take the request, response, and next function as arguments.
+3. You can use middleware functions to add authentication, logging, error handling, or other functionality to your API routes.
+4. Middleware functions can be applied globally to all API routes or selectively to specific routes based on their path or method.
+
+```javascript
+// middleware/auth.js
+export default function authMiddleware(handler) {
+  return (req, res) => {
+    if (!req.headers.authorization) {
+      return res.status(401).json({ message: 'Unauthorized' })
+    }
+
+    return handler(req, res)
+  }
+}
+
+// pages/api/protected.js
+import authMiddleware from '../../middleware/auth'
+
+export default authMiddleware((req, res) => {
+  res.status(200).json({ message: 'Protected Route' })
+})
+```
+
+
+
+
+
+

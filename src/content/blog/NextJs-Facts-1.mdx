@@ -1,0 +1,115 @@
+---
+heroImage: /src/assets/images/nextjs-facts/next.jpeg
+category: SPA
+description: 'Nextjs Facts 1'
+pubDate: 2024-07-12T23:23:00.000Z
+tags:
+  - nextjs
+title: Nextjs Facts 1
+---
+
+## Built-in optimizations
+
+1. Next.js comes with built-in optimizations like code splitting, image optimization, and server-side rendering to improve the performance of your application.
+2. Code splitting allows you to split your code into smaller chunks that are loaded only when needed, reducing the initial load time of your application.
+3. Image optimization automatically optimizes images by resizing and compressing them to reduce the file size and improve the performance of your application.
+4. Server-side rendering allows you to generate HTML on the server and send it to the client, reducing the time to first paint and improving SEO.
+
+```javascript
+// pages/index.js
+import Image from 'next/image'
+
+export default function Home() {
+  return (
+    <div>
+      <h1>Welcome to Next.js</h1>
+      <Image src="/image.jpg" alt="Next.js" width={500} height={500} />
+    </div>
+  )
+}
+```
+
+<hr />
+
+## Dynamic HTML Streaming
+
+1. Next.js supports dynamic HTML streaming, which allows you to stream HTML content to the client as it is being generated on the server.
+2. This feature improves the time to first byte (TTFB) and time to first paint (TTFP) of your application, providing a better user experience.
+3. Dynamic HTML streaming is particularly useful for pages with large amounts of content or data that take time to generate on the server.
+
+```javascript
+// pages/index.js
+export async function getServerSideProps() {
+  const data = await fetchData()
+  return {
+    props: { data }
+  }
+}
+
+export default function Home({ data }) {
+  return (
+    <div>
+      {data.map(item => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  )
+}
+```
+
+<hr />
+
+## React Server Components
+
+1. Next.js introduces React Server Components, a new feature that allows you to offload server-side rendering to the server while keeping the interactivity of client-side rendering.
+2. React Server Components enable you to fetch data, perform server-side computations, and render components on the server, improving the performance and SEO of your application.
+3. This feature allows you to build dynamic and interactive applications that are fast and SEO-friendly.
+
+```javascript
+// components/ServerComponent.js
+import { ServerComponent } from 'next/server'
+
+export default function MyServerComponent() {
+  return (
+    <ServerComponent>
+      <h1>Welcome to Next.js</h1>
+    </ServerComponent>
+  )
+}
+```
+<hr />
+
+## Data Fetching
+
+1. Next.js provides multiple ways to fetch data, including `getStaticProps`, `getServerSideProps`, and `getInitialProps`, to fetch data at build time, request time, or both.
+2. `getStaticProps` allows you to fetch data at build time and generate static HTML pages, improving the performance of your application.
+3. `getServerSideProps` fetches data on each request, allowing you to generate dynamic content based on the user's request.
+4. `getInitialProps` is an older method that fetches data on the server or client, depending on the page's context.
+
+```javascript
+// pages/index.js
+export async function getStaticProps() {
+  const data = await fetchData()
+  return {
+    props: { data }
+  }
+}
+
+export default function Home({ data }) {
+  return (
+    <div>
+      {data.map(item => (
+        <div key={item.id}>{item.name}</div>
+      ))}
+    </div>
+  )
+}
+```
+
+<hr />
+
+
+
+
+
+
