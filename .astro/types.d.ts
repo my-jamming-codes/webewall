@@ -199,6 +199,20 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"NextJs-Facts-1.mdx": {
+	id: "NextJs-Facts-1.mdx";
+  slug: "nextjs-facts-1";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
+"NextJs-Facts-2.mdx": {
+	id: "NextJs-Facts-2.mdx";
+  slug: "nextjs-facts-2";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "React-Facts-1.mdx": {
 	id: "React-Facts-1.mdx";
   slug: "react-facts-1";
