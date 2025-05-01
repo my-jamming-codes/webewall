@@ -185,44 +185,9 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"Angular-Facts-1.mdx": {
-	id: "Angular-Facts-1.mdx";
-  slug: "angular-facts-1";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"Flutter-Facts-1.mdx": {
-	id: "Flutter-Facts-1.mdx";
-  slug: "flutter-facts-1";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"NextJs-Facts-1.mdx": {
-	id: "NextJs-Facts-1.mdx";
-  slug: "nextjs-facts-1";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"NextJs-Facts-2.mdx": {
-	id: "NextJs-Facts-2.mdx";
-  slug: "nextjs-facts-2";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"React-Facts-1.mdx": {
-	id: "React-Facts-1.mdx";
-  slug: "react-facts-1";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
-"UI-Facts-1.mdx": {
-	id: "UI-Facts-1.mdx";
-  slug: "ui-facts-1";
+"init.mdx": {
+	id: "init.mdx";
+  slug: "init";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

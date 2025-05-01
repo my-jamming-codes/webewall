@@ -1,7 +1,2 @@
 // List of categories for blog posts
-export const CATEGORIES = [
-	'SPA',
-	'UI',
-	'Mobile'
-] as const
-
+export const CATEGORIES = ['Init'] as const
