@@ -15,17 +15,27 @@ const { posts } = Astro.props
 	{
 		posts.length > 0 ? (
 			posts.map((post) => {
+				const isRemoteHeroImage = typeof post.data.heroImage === 'string'
 				return (
 					<div class='flex flex-wrap gap-2'>
 						<div class='min-h-full'>
-							<Image
-								src={post.data.heroImage}
-								width={200}
-								height={200}
-								format='webp'
-								class='w-16 h-16 object-cover rounded-full  '
-								alt={`img of ${post.data.title}`}
-							/>
+							{isRemoteHeroImage ? (
+								<img
+									src={post.data.heroImage}
+									class='w-16 h-16 object-cover rounded-full'
+									alt={`img of ${post.data.title}`}
+									loading='lazy'
+								/>
+							) : (
+								<Image
+									src={post.data.heroImage}
+									width={200}
+									height={200}
+									format='webp'
+									class='w-16 h-16 object-cover rounded-full'
+									alt={`img of ${post.data.title}`}
+								/>
+							)}
 						</div>
 						<header class='flex justify-center items-center'>
 							<a class='font-medium  hover:underline' href={`/post/${post.slug}/`}>

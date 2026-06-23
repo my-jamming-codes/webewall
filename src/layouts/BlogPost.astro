@@ -15,6 +15,7 @@ type Props = {
 
 const { data, readTime, headings, id } = Astro.props
 const { title, description, pubDate, heroImage, tags } = data
+const isRemoteHeroImage = typeof heroImage === 'string'
 
 const articleDate = pubDate.toISOString()
 ---
@@ -22,7 +23,7 @@ const articleDate = pubDate.toISOString()
 <BaseLayout
 	title={title}
 	description={description}
-	image={heroImage?.src}
+	image={isRemoteHeroImage ? heroImage : heroImage?.src}
 	articleDate={articleDate}
 >
 	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
@@ -48,18 +49,26 @@ const articleDate = pubDate.toISOString()
 
 		<>
 			{
-				heroImage && (
-					<Image
-						src={heroImage}
-						width={1000}
-						height={500}
-						quality={100}
-						format='jpg'
-						loading='eager'
-						class='rounded-md w-full max-h-[300px]  md:max-h-[500px] my-8 object-cover'
-						alt={`img of ${title}`}
-					/>
-				)
+				heroImage &&
+					(isRemoteHeroImage ? (
+						<img
+							src={heroImage}
+							loading='eager'
+							class='rounded-md w-full max-h-[300px]  md:max-h-[500px] my-8 object-cover'
+							alt={`img of ${title}`}
+						/>
+					) : (
+						<Image
+							src={heroImage}
+							width={1000}
+							height={500}
+							quality={100}
+							format='jpg'
+							loading='eager'
+							class='rounded-md w-full max-h-[300px]  md:max-h-[500px] my-8 object-cover'
+							alt={`img of ${title}`}
+						/>
+					))
 			}
 		</>
 

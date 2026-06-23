@@ -192,6 +192,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
+"kotlin-android-development.mdx": {
+	id: "kotlin-android-development.mdx";
+  slug: "kotlin-android-development";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".mdx"] };
 "privacy-policy.mdx": {
 	id: "privacy-policy.mdx";
   slug: "privacy-policy";
